@@ -3,6 +3,7 @@ function NavBar() {
   // - Add hamburger menu for mobile
   // - Change nav items to hamburger menu when scrolling
   // - Add nav items placeholders
+  // - Add effects for nav items
   // - Add logo
 
   return (

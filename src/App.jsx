@@ -1,5 +1,9 @@
 import React from "react";
 import NavBar from "./components/NavBar";
+
+// TODO:
+// - Add colors
+// - Change font
 function App() {
   return (
     <>
