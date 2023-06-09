@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MobileSidebar from "./MobileSidebar";
+import WhiteLogoSvg from "../assets/SVG/Logo WhiteAsset 21.svg";
 
 function NavBar() {
   // TODO:
@@ -18,11 +19,16 @@ function NavBar() {
       {isSidebarOpen && <MobileSidebar handleSidebarState={toggleSidebar} />}
 
       <nav className="h-24 w-full fixed top-0 left-0 z-10 text-lg bg-gradient-to-b from-primary-dark">
-        <div className="mx-auto max-w-full h-full p-4 md:px-20 px-12 flex items-center justify-between">
-          <a href="" className="md:px-4">
-            [[[[ LOGO ]]]]
+        <div className="mx-auto max-w-full h-full p-4 lg:px-20 px-8 flex items-center justify-between">
+          <a href="" className="lg:px-4 flex items-center">
+            <img
+              src={WhiteLogoSvg}
+              alt="Logo of cyb.org"
+              className="h-10 lg:h-12 mr-1"
+            />
+            <h1 className="text-3xl lg:text-4xl font-semibold">CYB:ORG</h1>
           </a>
-          <button onClick={toggleSidebar} className="md:hidden">
+          <button onClick={toggleSidebar} className="lg:hidden">
             <svg
               height="1.75em"
               width="1.75em"
@@ -53,7 +59,7 @@ function NavBar() {
               </g>
             </svg>
           </button>
-          <div className="md:flex space-x-1 hidden">
+          <div className="lg:flex space-x-1 hidden">
             <a href="" className="px-4">
               About
             </a>

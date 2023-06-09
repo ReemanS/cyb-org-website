@@ -12,7 +12,7 @@ export default {
       },
       fontFamily: {
         lato: ["Lato", "sans-serif"],
-        manrope: ["Manrope", "sans-serif"],
+        unbounded: ["Unbounded", "sans-serif"],
       },
     },
   },
