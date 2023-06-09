@@ -1,34 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import MobileSidebar from "./MobileSidebar";
 import WhiteLogoSvg from "../assets/SVG/Logo WhiteAsset 21.svg";
+import { Dialog, Transition } from "@headlessui/react";
 import "../styles/Navbar.css";
 
-function NavBar() {
-  // TODO:
-  // - Add hamburger menu for mobile
-  // - Add nav items placeholders
-  // - Add effects for nav items
-  // - Add logo
+// TODO:
+// - Add hamburger menu for mobile
+// - Add nav items placeholders
+// - Add effects for nav items
+// - Add logo
 
+function NavBar() {
   // Sidebar state
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Function to toggle sidebar
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+  // Function to close sidebar
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
   };
 
-  const handleBodyOverflow = () => {
-    document.body.style.overflow = isSidebarOpen ? "hidden" : "auto";
+  // Function to open sidebar
+  const openSidebar = () => {
+    setIsSidebarOpen(true);
   };
-
-  useEffect(() => {
-    handleBodyOverflow();
-  }, [isSidebarOpen]);
 
   return (
     <>
-      {isSidebarOpen && <MobileSidebar handleSidebarState={toggleSidebar} />}
+      <Transition
+        show={isSidebarOpen}
+        enter="transition duration-200 ease-out"
+        enterFrom="translate-x-full"
+        enterTo="translate-x-0"
+        leave="transition duration-200 ease-out"
+        leaveFrom="translate-x-0"
+        leaveTo="translate-x-full"
+      >
+        <Dialog open={isSidebarOpen} onClose={closeSidebar}>
+          <Dialog.Panel>
+            <MobileSidebar handleCloseSidebar={closeSidebar} />
+          </Dialog.Panel>
+        </Dialog>
+      </Transition>
 
       <nav className="h-24 w-full fixed top-0 left-0 z-10 text-lg bg-gradient-to-b from-primary-dark">
         <div className="mx-auto max-w-full h-full p-4 lg:px-20 px-8 flex items-center justify-between">
@@ -40,7 +52,7 @@ function NavBar() {
             />
             <h1 className="text-3xl lg:text-4xl font-semibold">CYB:ORG</h1>
           </a>
-          <button onClick={toggleSidebar} className="lg:hidden">
+          <button onClick={openSidebar} className="lg:hidden">
             <svg
               height="1.75em"
               width="1.75em"

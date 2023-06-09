@@ -1,18 +1,13 @@
 import React from "react";
 import { primary } from "../variables";
 
-function MobileSidebar({ handleSidebarState }) {
-  const handleCloseSidebar = () => {
-    handleSidebarState();
-  };
-
+function MobileSidebar({ handleCloseSidebar }) {
   return (
     <>
-      <div
-        onClick={handleCloseSidebar}
-        className="fixed inset-0 bg-gray-950 opacity-40 z-20"
-      ></div>
-      <nav className="fixed top-0 right-0 z-30 bg-white h-screen w-1/2 text-primary text-lg transition-transform ease-in delay-500 transform translate-x-full">
+      {/* Backdrop */}
+      <div className="fixed inset-0 bg-black/30 z-20" aria-hidden="true" />
+
+      <nav className="fixed top-0 right-0 z-30 bg-white h-screen w-1/2 text-primary text-lg">
         <div className="p-8">
           <div className="w-full flex items-center justify-end">
             <button onClick={handleCloseSidebar}>
