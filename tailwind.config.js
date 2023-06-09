@@ -4,7 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#21332f",
+        primary: {
+          light: "#41635c",
+          DEFAULT: "#21332f",
+          dark: "#1d2e2a",
+        },
       },
       fontFamily: {
         lato: ["Lato", "sans-serif"],
