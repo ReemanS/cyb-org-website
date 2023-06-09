@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MobileSidebar from "./MobileSidebar";
 import WhiteLogoSvg from "../assets/SVG/Logo WhiteAsset 21.svg";
+import "../styles/Navbar.css";
 
 function NavBar() {
   // TODO:
@@ -8,11 +9,22 @@ function NavBar() {
   // - Add nav items placeholders
   // - Add effects for nav items
   // - Add logo
+
+  // Sidebar state
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // Function to toggle sidebar
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  const handleBodyOverflow = () => {
+    document.body.style.overflow = isSidebarOpen ? "hidden" : "auto";
+  };
+
+  useEffect(() => {
+    handleBodyOverflow();
+  }, [isSidebarOpen]);
 
   return (
     <>
@@ -20,7 +32,7 @@ function NavBar() {
 
       <nav className="h-24 w-full fixed top-0 left-0 z-10 text-lg bg-gradient-to-b from-primary-dark">
         <div className="mx-auto max-w-full h-full p-4 lg:px-20 px-8 flex items-center justify-between">
-          <a href="" className="lg:px-4 flex items-center">
+          <a href="" className="flex items-center">
             <img
               src={WhiteLogoSvg}
               alt="Logo of cyb.org"
@@ -61,13 +73,13 @@ function NavBar() {
           </button>
           <div className="lg:flex space-x-1 hidden">
             <a href="" className="px-4">
-              About
+              <span className="nav-items cursor-pointer">About</span>
             </a>
             <a href="" className="px-4">
-              Projects
+              <span className="nav-items cursor-pointer">Projects</span>
             </a>
             <a href="" className="px-4">
-              Contact us
+              <span className="nav-items cursor-pointer">Contact Us</span>
             </a>
           </div>
         </div>
