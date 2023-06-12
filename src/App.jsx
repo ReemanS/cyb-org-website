@@ -7,7 +7,7 @@ import Nav from "./components/Nav";
 function App() {
   return (
     <>
-      <NavBar />
+      <Nav />
       <section className="mt-24">
         <p>Foo</p>
         <p>Foo</p>
