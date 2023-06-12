@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./components/NavBar";
+import Nav from "./components/Nav";
 
 // TODO:
 // - Add colors
