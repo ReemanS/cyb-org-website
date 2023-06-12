@@ -45,14 +45,26 @@ function MobileSidebar({ handleCloseSidebar }) {
           </div>
 
           <ul className="my-4">
-            <li className="mb-4">
-              <a href="">About</a>
+            <li className="mb-4 ">
+              <a href="">
+                <span className="active:ring-4 active:ring-offset-2 active:ring-primary-light">
+                  About
+                </span>
+              </a>
             </li>
             <li className="mb-4">
-              <a href="">Projects</a>
+              <a href="">
+                <span className="active:ring-4 active:ring-offset-2 active:ring-primary-light">
+                  Projects
+                </span>
+              </a>
             </li>
             <li className="mb-4">
-              <a href="">Contact Us</a>
+              <a href="">
+                <span className="active:ring-4 active:ring-offset-2 active:ring-primary-light">
+                  Contact Us
+                </span>
+              </a>
             </li>
           </ul>
         </div>

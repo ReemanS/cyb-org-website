@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import WhiteLogoSvg from "../assets/SVG/Logo WhiteAsset 21.svg";
+// import fullLogo from "../assets/PNG/logo transparent.png";
 import "../styles/Navbar.css";
 import MobileSidebar from "./MobileSidebar";
 import { AnimatePresence, motion } from "framer-motion";
-
-// TODO:
-// - Add hamburger menu for mobile
-// - Add nav items placeholders
-// - Add effects for nav items
-// - Add logo
 
 function Nav() {
   // Sidebar state
@@ -44,6 +39,7 @@ function Nav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.1 }}
             className="z-20"
           >
             <MobileSidebar handleCloseSidebar={closeSidebar} />
@@ -66,6 +62,11 @@ function Nav() {
               className="h-10 lg:h-12 mr-1"
             />
             <h1 className="text-3xl lg:text-4xl font-semibold">CYB:ORG</h1>
+            {/* <img
+              src={fullLogo}
+              alt="Logo of cyb.org"
+              className="h-24 lg:h-28"
+            /> */}
           </motion.a>
           <button onClick={openSidebar} className="lg:hidden">
             <svg
