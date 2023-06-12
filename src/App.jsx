@@ -39,18 +39,6 @@ function App() {
         <p>Foo</p>
         <p>Foo</p>
         <p>Foo</p>
-        <p>Foo</p>
-        <p>Foo</p>
-        <p>Foo</p>
-        <p>Foo</p>
-        <p>Foo</p>
-        <p>Foo</p>
-        <p>Foo</p>
-        <p>Foo</p>
-        <p>Foo</p>
-        <p>Foo</p>
-        <p>Foo</p>
-        <p>Foo</p>
       </section>
     </>
   );

@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from "react";
-import MobileSidebar from "./MobileSidebar";
+import React, { useState } from "react";
 import WhiteLogoSvg from "../assets/SVG/Logo WhiteAsset 21.svg";
-import { Dialog, Transition } from "@headlessui/react";
 import "../styles/Navbar.css";
+import MobileSidebar from "./MobileSidebar";
+import { AnimatePresence, motion } from "framer-motion";
 
 // TODO:
 // - Add hamburger menu for mobile
@@ -26,21 +26,18 @@ function NavBar() {
 
   return (
     <>
-      <Transition
-        show={isSidebarOpen}
-        enter="transition duration-200 ease-out"
-        enterFrom="translate-x-full"
-        enterTo="translate-x-0"
-        leave="transition duration-200 ease-out"
-        leaveFrom="translate-x-0"
-        leaveTo="translate-x-full"
-      >
-        <Dialog open={isSidebarOpen} onClose={closeSidebar}>
-          <Dialog.Panel>
+      <AnimatePresence>
+        {isSidebarOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="z-20"
+          >
             <MobileSidebar handleCloseSidebar={closeSidebar} />
-          </Dialog.Panel>
-        </Dialog>
-      </Transition>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <nav className="h-24 w-full fixed top-0 left-0 z-10 text-lg bg-gradient-to-b from-primary-dark">
         <div className="mx-auto max-w-full h-full p-4 lg:px-20 px-8 flex items-center justify-between">
@@ -68,9 +65,7 @@ function NavBar() {
                 stroke-linejoin="round"
               ></g>
               <g id="SVGRepo_iconCarrier">
-                {" "}
                 <g id="Menu / Menu_Alt_04">
-                  {" "}
                   <path
                     id="Vector"
                     d="M5 17H19M5 12H19M5 7H13"
@@ -78,8 +73,8 @@ function NavBar() {
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                  ></path>{" "}
-                </g>{" "}
+                  ></path>
+                </g>
               </g>
             </svg>
           </button>

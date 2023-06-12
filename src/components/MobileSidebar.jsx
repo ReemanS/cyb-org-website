@@ -4,10 +4,12 @@ import { primary } from "../variables";
 function MobileSidebar({ handleCloseSidebar }) {
   return (
     <>
-      {/* Backdrop */}
-      <div className="fixed inset-0 bg-black/30 z-20" aria-hidden="true" />
+      <div
+        onClick={handleCloseSidebar}
+        className="fixed z-20 top-0 left-0 w-full h-screen bg-black opacity-50"
+      ></div>
 
-      <nav className="fixed top-0 right-0 z-30 bg-white h-screen w-1/2 text-primary text-lg">
+      <nav className="fixed z-30 top-0 right-0 bg-white h-screen w-1/2 text-primary text-lg">
         <div className="p-8">
           <div className="w-full flex items-center justify-end">
             <button onClick={handleCloseSidebar}>
