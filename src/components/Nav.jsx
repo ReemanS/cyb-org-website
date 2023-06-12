@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 // - Add effects for nav items
 // - Add logo
 
-function NavBar() {
+function Nav() {
   // Sidebar state
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
