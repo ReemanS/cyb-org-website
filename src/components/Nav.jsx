@@ -24,8 +24,20 @@ function NavBar() {
     setIsSidebarOpen(true);
   };
 
+  // Variants for nav items
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { delay: 0.1, staggerChildren: 0.2 } },
+  };
+
+  const listItemVariants = {
+    hidden: { opacity: 0, y: -30 },
+    show: { opacity: 1, y: 0 },
+  };
+
   return (
     <>
+      {/* Mobile sidebar */}
       <AnimatePresence>
         {isSidebarOpen && (
           <motion.div
@@ -39,16 +51,22 @@ function NavBar() {
         )}
       </AnimatePresence>
 
+      {/* Desktop navbar */}
       <nav className="h-24 w-full fixed top-0 left-0 z-10 text-lg bg-gradient-to-b from-primary-dark">
         <div className="mx-auto max-w-full h-full p-4 lg:px-20 px-8 flex items-center justify-between">
-          <a href="" className="flex items-center">
+          <motion.a
+            href=""
+            className="flex items-center"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
             <img
               src={WhiteLogoSvg}
               alt="Logo of cyb.org"
               className="h-10 lg:h-12 mr-1"
             />
             <h1 className="text-3xl lg:text-4xl font-semibold">CYB:ORG</h1>
-          </a>
+          </motion.a>
           <button onClick={openSidebar} className="lg:hidden">
             <svg
               height="1.75em"
@@ -78,21 +96,32 @@ function NavBar() {
               </g>
             </svg>
           </button>
-          <div className="lg:flex space-x-1 hidden">
-            <a href="" className="px-4">
-              <span className="nav-items cursor-pointer">About</span>
-            </a>
-            <a href="" className="px-4">
-              <span className="nav-items cursor-pointer">Projects</span>
-            </a>
-            <a href="" className="px-4">
-              <span className="nav-items cursor-pointer">Contact Us</span>
-            </a>
-          </div>
+          <motion.ul
+            className="lg:flex space-x-1 hidden"
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.li variants={listItemVariants}>
+              <a href="" className="px-4">
+                <span className="nav-items cursor-pointer">About</span>
+              </a>
+            </motion.li>
+            <motion.li variants={listItemVariants}>
+              <a href="" className="px-4">
+                <span className="nav-items cursor-pointer">Projects</span>
+              </a>
+            </motion.li>
+            <motion.li variants={listItemVariants}>
+              <a href="" className="px-4">
+                <span className="nav-items cursor-pointer">Contact Us</span>
+              </a>
+            </motion.li>
+          </motion.ul>
         </div>
       </nav>
     </>
   );
 }
 
-export default NavBar;
+export default Nav;
