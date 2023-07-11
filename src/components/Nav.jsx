@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { primary } from "../variables";
+import { primary, sections } from "../variables";
 import WhiteLogoSvg from "../assets/SVG/Logo WhiteAsset 21.svg";
 // import fullLogo from "../assets/PNG/logo transparent.png";
 import "../styles/Navbar.css";
@@ -26,9 +26,14 @@ function Nav() {
     show: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
-  const listItemVariants = {
+  const listItemYVariants = {
     hidden: { opacity: 0, y: -30 },
     show: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+  };
+
+  const listItemXVariants = {
+    hidden: { opacity: 0, x: 30 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.2 } },
   };
 
   return (
@@ -91,29 +96,28 @@ function Nav() {
                   </button>
                 </div>
 
-                <ul className="my-4">
-                  <li className="mb-4">
-                    <a href="">
-                      <span className="active:ring-4 active:ring-offset-2 active:ring-primary-light">
-                        About
-                      </span>
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a href="">
-                      <span className="active:ring-4 active:ring-offset-2 active:ring-primary-light">
-                        Projects
-                      </span>
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a href="">
-                      <span className="active:ring-4 active:ring-offset-2 active:ring-primary-light">
-                        Contact Us
-                      </span>
-                    </a>
-                  </li>
-                </ul>
+                <motion.ul
+                  className="my-4"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="show"
+                >
+                  {sections.map((section, i) => {
+                    return (
+                      <motion.li
+                        key={i}
+                        variants={listItemXVariants}
+                        className="mb-4"
+                      >
+                        <a href="">
+                          <span className="active:ring-4 active:ring-offset-2 active:ring-primary-light">
+                            {section}
+                          </span>
+                        </a>
+                      </motion.li>
+                    );
+                  })}
+                </motion.ul>
               </div>
             </motion.nav>
           </Dialog>
@@ -141,6 +145,8 @@ function Nav() {
               className="h-24 lg:h-28"
             /> */}
           </motion.a>
+
+          {/* Responsive nav button */}
           <button onClick={openSidebar} className="lg:hidden">
             <svg
               height="1.75em"
@@ -170,27 +176,27 @@ function Nav() {
               </g>
             </svg>
           </button>
+
+          {/* Desktop nav items */}
           <motion.ul
             className="lg:flex space-x-1 hidden"
             variants={containerVariants}
             initial="hidden"
             animate="show"
           >
-            <motion.li variants={listItemVariants}>
-              <a href="" className="px-4">
-                <span className="nav-items cursor-pointer">About</span>
-              </a>
-            </motion.li>
-            <motion.li variants={listItemVariants}>
-              <a href="" className="px-4">
-                <span className="nav-items cursor-pointer">Projects</span>
-              </a>
-            </motion.li>
-            <motion.li variants={listItemVariants}>
-              <a href="" className="px-4">
-                <span className="nav-items cursor-pointer">Contact Us</span>
-              </a>
-            </motion.li>
+            {sections.map((section, i) => {
+              return (
+                <motion.li
+                  key={i}
+                  variants={listItemYVariants}
+                  className="mb-4"
+                >
+                  <a href="" className="px-4">
+                    <span className="nav-items cursor-pointer">{section}</span>
+                  </a>
+                </motion.li>
+              );
+            })}
           </motion.ul>
         </div>
       </nav>
